@@ -6,7 +6,7 @@
 
   See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
 
-  Next, create a function `birthdayReminder` that accepts an array of objects, containing a person's
+  Next, create a function ` ` that accepts an array of objects, containing a person's
   date of birth (dob), and returns an array of reminder messages (strings).
 
   ```javascript
@@ -34,3 +34,60 @@
 */
 
 // YOUR CODE HERE
+function daysUntilDate(date){
+  var day = date.split("/")[1];
+  var month = date.split("/")[0];
+  var year = date.split("/")[2];
+
+  var todaysDate = new Date();
+  var chosenDate = Date.parse(date);
+  var difference = chosenDate - todaysDate;
+
+  if(difference >= 0){
+    return Math.floor(difference/(1000*60*60*24));
+  }
+  else{
+    year = todaysDate.getFullYear();
+    date = [month, day ,year].join("/");
+    chosenDate = Date.parse(date);
+    difference = chosenDate - todaysDate;
+    if(difference >= 0){
+      return Math.floor(difference/(1000*60*60*24));
+    }
+    else{
+      year++;
+      date = [month, day ,year].join("/");
+      chosenDate = Date.parse(date);
+      difference = chosenDate - todaysDate;
+      return Math.floor(difference/(1000*60*60*24));
+    }
+  }
+}
+
+unction birthdayReminder(arr){
+  var reminders = [];
+
+  //add "birthdayIn" property to an object
+  arr.forEach(function(obj){
+    obj["birthdayIn"] = daysUntilDate(obj.dob) ;
+  });
+
+  //sort objects by "birthdayIn" key
+  arr.sort(function(obj1, obj2){
+    if(obj1.birthdayIn > obj2.birthdayIn){
+      return 1;
+    }
+    if(obj1.birthdayIn < obj2.birthdayIn){
+      return -1;
+    }
+
+    return 0;
+  });
+
+  //making an array of reminders
+  arr.forEach(function(obj){
+    reminders.push(obj.name + "'s " + "birsday is in " +daysUntilDate(obj.dob) +" days!");
+  });
+
+  return reminders;
+}

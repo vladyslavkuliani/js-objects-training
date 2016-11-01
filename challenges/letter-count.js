@@ -31,3 +31,18 @@
 */
 
 // YOUR CODE HERE
+function letterCount(str){
+  str = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+  var LetterCount = {};
+
+  //access string as an array of characters
+  for(var i=0; i<str.length; i++){
+    if(!(str[i] in LetterCount)){
+      LetterCount[str[i]] = 1/str.length; //show percentage
+    }
+    else{
+      LetterCount[str[i]]+= (1/str.length);
+    }
+  }
+  return LetterCount;
+}

@@ -45,3 +45,27 @@
 */
 
 // YOUR CODE HERE
+function parseQueryString(query){
+  var finalObject = {};
+  var arrOfKeyValue = [];
+  var queries = query.split('&');
+  queries.forEach(function(str){
+    arrOfKeyValue.push(str.split('='));
+  });
+
+  arrOfKeyValue.forEach(function(pair){
+    finalObject[pair[0]] = pair[1];
+  });
+
+  return finalObject;
+}
+
+function convertToQueryParameter(o){
+  var resultQuery = "";
+  var arrOfKeyValue = [];
+  for(var key in o){
+    arrOfKeyValue.push(key+"="+o[key]);
+  }
+
+  return arrOfKeyValue.join("&");
+}

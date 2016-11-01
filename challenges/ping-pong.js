@@ -38,3 +38,31 @@
 */
 
 // YOUR CODE HERE
+
+function pingPong(speed, ...tables){ //spread syntax ES6 to take multiple parameters
+  var results = [];
+  tables.forEach(function(table){ //find result on each table
+   var i=0;
+   var speedo = speed; //refresh value of the speedo for each new table
+   while(speedo>0){ //going with speed N <=> going N times with speed 1
+    if(table[i]!=null){
+      //when mooving to the right
+      if(Math.floor((table[i].steps)/(table.length-1))%2===0){
+        table[i+1] = table[i];
+        table[i+1].steps++;
+        table[i] = null;
+      }
+      else{ //moving to the left
+        table[i-1] = table[i];
+        table[i-1].steps++;
+        table[i] = null;
+        i-=2; // -2 because of increment below (make just 1 step back!)
+      }
+      speedo--;
+    }
+    i++;
+   }
+    results.push(table);
+  });
+  return results; //return array of results on each table
+}

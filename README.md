@@ -29,3 +29,8 @@ There are a number of options for running/executing your code. They all have the
         * Tip: Type `.exit` to quit. Use `↑` and `↓` to cycle through your code history.
     + **Using the [`node some-file.js` command](http://javascript.cs.lmu.edu/notes/commandlinejs/)**
         * Tip: Use `ctrl` + `c` (shortcut) to quit "hanging" programs. And make sure to `console.log("your output")`.
+
+## Training Reflection
+All tasks (including bonus sections of each) were successfully completed.
+Each of them provide you a good practice on Javascript Objects manipulation.
+All tasks were worthy and very competitive.
